@@ -10,6 +10,7 @@ BBfootball.Models = BBfootball.Models || {};
         url: '',
 
         initialize: function() {
+
         },
 
         defaults: {

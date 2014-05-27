@@ -9,7 +9,7 @@ BBfootball.Views = BBfootball.Views || {};
 
         template: JST['app/scripts/templates/Match.ejs'],
 
-        tagName: 'div',
+        tagName: 'tr',
 
         id: '',
 
@@ -18,11 +18,13 @@ BBfootball.Views = BBfootball.Views || {};
         events: {},
 
         initialize: function () {
-            this.listenTo(this.model, 'change', this.render);
+            //this.listenTo(this.model, 'change', this.render);
         },
 
         render: function () {
+
             this.$el.html(this.template(this.model.toJSON()));
+            return this.el;
         }
 
     });

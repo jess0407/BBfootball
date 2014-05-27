@@ -1,35 +1,7 @@
-<div class="col-sm-4 result">
-<h1>Result</h1>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Home</th>
-        <th>Score</th>
-        <th>Away</th>
-        </tr>
-    </thead>
-  </table>
-	
-</div>
-
-<div class="col-sm-8 leaguetable">
-	<h1>League Table</h1>
-		<table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Pos</th>
-              <th>Team</th>
-              <th>P</th>
-              <th>W</th>
-              <th>D</th>
-              <th>L</th>
-              <th>F</th>
-              <th>A</th>
-              <th>GD</th>
-              <th>Pts</th>
-        </tr>
-      </thead>
-
-    </table>
-	
-</div>
+            <div class="head">
+              <button id='left' type="button" class="btn btn-default"> < </button>
+                <h2 id='choosedDay'><span class="label label-success">
+                    <%=date.format('MMMM Do YYYY,  dddd')%></span>
+                </h2>
+                <button id='right' type="button" class="btn btn-default" > > </button>
+            </div>

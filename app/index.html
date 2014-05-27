@@ -21,18 +21,44 @@
 
 
         <div id="wrapper">
-            <h1>Interactive Football Results</h1>
-            <div class="head">
-                <button id='left' type="button" class="btn btn-default">
-                  <
-                </button>
+            <h1 id="h1">Interactive Football Results</h1>
 
-            <h2 id='choosedDay'><span class="label label-success">{{dates[day].format('MMM Do YY')}}</span></h2>
 
-                <button id='right' type="button" class="btn btn-default" >
-                  >
-                </button>
+            <div class="col-sm-4 result">
+            <h1>Result</h1>
+              <table id='result' class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Home</th>
+                    <th>Score</th>
+                    <th>Away</th>
+                    </tr>
+                </thead>
+              </table>
+                
             </div>
+
+        <div class="col-sm-8 leaguetable">
+            <h1>League Table</h1>
+                <table id='ltable' class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Pos</th>
+                  <th>Team</th>
+                  <th>P</th>
+                  <th>W</th>
+                  <th>D</th>
+                  <th>L</th>
+                  <th>F</th>
+                  <th>A</th>
+                  <th>GD</th>
+                  <th>Pts</th>
+                </tr>
+              </thead>
+
+            </table>
+            
+        </div>
             
 
         
@@ -90,6 +116,8 @@
         <script src="scripts/views/MatchDay.js"></script>
         <script src="scripts/models/MatchDay.js"></script>
         <script src="scripts/collections/MatchDay.js"></script>
+        <script src="scripts/collections/Team.js"></script>
+        <script src="scripts/models/Team.js"></script>
         <!-- endbuild -->
    
 

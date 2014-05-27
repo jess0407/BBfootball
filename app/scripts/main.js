@@ -8,8 +8,7 @@ window.BBfootball = {
     Routers: {},
     init: function () {
         'use strict';
-        console.log('Hello from Backbone!');
-        var initialView = new BBfootball.Views.MatchDay();
+        this.initialView = new BBfootball.Views.MatchDay(matchesData);
     }
 };
 
