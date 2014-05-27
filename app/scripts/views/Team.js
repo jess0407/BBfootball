@@ -81,10 +81,9 @@ BBfootball.Views = BBfootball.Views || {};
                 var GD = F - A;
                 var Pts = 3*win + D;
 
-                
 
 
-                this.collection.add(new BBfootball.Models.Team({id:obj.id,
+                this.collection.add(new BBfootball.Models.Team({
                                                                 name:obj.name,
                                                                 P: P,
                                                                 W:win,
@@ -95,8 +94,12 @@ BBfootball.Views = BBfootball.Views || {};
                                                                 GD:GD,
                                                                 Pts:Pts}));
 
-           }, this);//end of map
-            this.collection.sort_key ='Pts';
+                 }, this);//end of map
+            
+                for(var i=0; i < this.collection.models.length; i++){
+                    this.collection.models[i].set({Pos:i+1});
+                }
+                
             
             this.render();
 
@@ -111,6 +114,7 @@ BBfootball.Views = BBfootball.Views || {};
         },
 
         render: function () {
+
 
             var self = this;
             self.$el.empty();
