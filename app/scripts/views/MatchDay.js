@@ -9,7 +9,7 @@ BBfootball.Views = BBfootball.Views || {};
 
         template: JST['app/scripts/templates/MatchDay.ejs'],
 
-        tagName: 'div',
+        tagName: 'tbody',
 
         id: '',
 
@@ -24,14 +24,33 @@ BBfootball.Views = BBfootball.Views || {};
             if(this.dates[index-1]){
                 this.model.set('date', this.dates[index-1]);
             }
-            this.render();
+            this.resetModel();
+            
         },
         next: function(){
             var index = _.indexOf(this.dates, this.model.get('date'));
             if(this.dates[index+1]){
                 this.model.set('date', this.dates[index+1]);
             }
+            this.resetModel();
+            
+        },
+        resetModel:function(){
+          //getting matches of the day
+            var matches = _.filter(this.collection, function(match){
+                return match.get('date').isSame(this.model.get('date'));
+            },this);
+
+            var aggmatches = _.filter(this.collection, function(match){
+                return match.get('date').isSame(this.model.get('date')) || match.get('date').isBefore(this.model.get('date'));
+            },this);            
+            this.model.set({matchesOfDay:matches,
+                            matchesToDate:aggmatches
+                            });
+
+
             this.render();
+
         },
 
         dates: [],
@@ -68,27 +87,18 @@ BBfootball.Views = BBfootball.Views || {};
                 return moment(date,'DD/MM/YY');
             });
             var day = _.last(this.dates);
+            //initialize matchDayModel here;
             this.model = new BBfootball.Models.MatchDay({date:day});
-
-            this.render();
+            this.resetModel();
+            
         },
 
         render: function () {
             $('#result').empty();
             var self = this.$el;
-           
-
-
-            console.log();
-            
             this.$el.html(this.template(this.model.toJSON()));
-            var matches = _.filter(this.collection, function(match){
-                return match.get('date').isSame(this.model.get('date'));
-            },this);
-            //console.log(matches);
-            this.model.set({matchesOfDay:matches});
-            
-            _.map(matches, function(match){
+           
+            _.map(this.model.get('matchesOfDay'), function(match){
                 var ma = new BBfootball.Views.Match({model:match});
                 var row = ma.render();             
                 $('#result').append(row);
