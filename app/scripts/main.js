@@ -16,4 +16,13 @@ window.BBfootball = {
 $(document).ready(function () {
     'use strict';
     BBfootball.init();
+    $(document).on('keydown', function(e){
+            if(e.keyCode===37){
+                $('#left').trigger('click');
+            }
+            if(e.keyCode===39){
+                 $('#right').trigger('click');
+            }
+            
+    });
 });
